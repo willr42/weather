@@ -1,4 +1,4 @@
-const API_KEY = "3hy5Wxy+klw7GLIKtDR1Jg==PIKW41SCjApWtOLR";
+const API_KEY = "Jf9gSRJrWMlyiQ1sx9tICZKrljgsT4ABVBxjpa67";
 
 if ("geolocation" in navigator) {
   const localError = document.querySelector("#localError");
