@@ -16,6 +16,9 @@ async function handleLocationSuccess(position) {
   const userLon = position.coords.longitude;
   const closestCityUrl = `https://api.api-ninjas.com/v1/reversegeocoding?lat=${userLat}&lon=${userLon}`;
   const closestCity = await fetchClosestCity(closestCityUrl);
+  if (!closestCity) {
+    return null;
+  }
   const currentWeather = await fetchCityWeather(closestCity.name);
   updateDOM("local", closestCity.name, currentWeather);
 }
@@ -30,6 +33,7 @@ async function fetchCityWeather(cityName) {
     });
     if (response.status !== 200) {
       console.error(response.status);
+      return null;
     }
     const data = await response.json();
     return data;
@@ -47,6 +51,7 @@ async function fetchClosestCity(closestCityUrl) {
     });
     if (response.status !== 200) {
       console.error(response.status);
+      return null;
     }
     const data = await response.json();
     return data[0];
