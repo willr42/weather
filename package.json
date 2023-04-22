@@ -9,12 +9,14 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "netlify-cli": "^14.2.1",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.7",
     "vite": "^4.3.0"
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",
+    "dotenv": "^16.0.3",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.1"
   }

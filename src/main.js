@@ -1,5 +1,3 @@
-const API_KEY = "Jf9gSRJrWMlyiQ1sx9tICZKrljgsT4ABVBxjpa67";
-
 if ("geolocation" in navigator) {
   const localError = document.querySelector("#localError");
   localError.classList.toggle("flex");
@@ -14,7 +12,7 @@ if ("geolocation" in navigator) {
 async function handleLocationSuccess(position) {
   const userLat = position.coords.latitude;
   const userLon = position.coords.longitude;
-  const closestCityUrl = `https://api.api-ninjas.com/v1/reversegeocoding?lat=${userLat}&lon=${userLon}`;
+  const closestCityUrl = `/.netlify/functions/getClosestCity?lat=${userLat}&long=${userLon}`;
   const closestCity = await fetchClosestCity(closestCityUrl);
   if (!closestCity) {
     return null;
@@ -24,13 +22,9 @@ async function handleLocationSuccess(position) {
 }
 
 async function fetchCityWeather(cityName) {
-  const cityNameUrl = `https://api.api-ninjas.com/v1/weather?city=${cityName}`;
+  const cityNameUrl = `/.netlify/functions/getWeather?city=${cityName}`;
   try {
-    const response = await fetch(cityNameUrl, {
-      headers: {
-        "X-Api-Key": API_KEY,
-      },
-    });
+    const response = await fetch(cityNameUrl);
     if (response.status !== 200) {
       console.error(response.status);
       return null;
@@ -44,11 +38,7 @@ async function fetchCityWeather(cityName) {
 
 async function fetchClosestCity(closestCityUrl) {
   try {
-    const response = await fetch(closestCityUrl, {
-      headers: {
-        "X-Api-Key": API_KEY,
-      },
-    });
+    const response = await fetch(closestCityUrl);
     if (response.status !== 200) {
       console.error(response.status);
       return null;
