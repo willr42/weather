@@ -5,11 +5,29 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./src/style.css" />
   </head>
-  <body>
-    <main>
+  <body class="bg-slate-100">
+    <main class="m-5 flex flex-col items-center gap-2">
+      <h1 class="text-2xl">Weather App for CoderAcademy</h1>
 
+      <form action="" method="get">
+        <input class="rounded p-1 pl-2" type="text" placeholder="city" />
+      </form>
+
+      <div class="mt-20 flex gap-5">
+        <div
+          id="searchCard"
+          class="flex flex-col items-center gap-1 border-2 border-solid border-slate-300 bg-white p-5"
+        >
+          <h2>Search Weather</h2>
+          <p id="searchEmoji" class="text-4xl">&#9728;&#65039;</p>
+          <p><span id="searchTemp">10</span>&#8451;</p>
+        </div>
+        <div id="userCard" class="bg-white">
+          <h2>Local Weather</h2>
+        </div>
+      </div>
     </main>
     <script type="module" src="./src/main.js"></script>
   </body>
