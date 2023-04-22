@@ -36,9 +36,14 @@
           </p>
         </div>
         <div
-          id="localCard"
-          class="flex flex-col items-center gap-1 border-2 border-solid border-slate-300 bg-white p-5 lg:p-14"
+          class="relative flex flex-col items-center gap-1 border-2 border-solid border-slate-300 bg-white p-5 lg:p-14"
         >
+          <div
+            id="localError"
+            class="absolute bottom-0 left-0 right-0 top-0 z-10 flex flex-col justify-center bg-white opacity-50"
+          >
+            <p class="p-2 text-center">You have declined location access.</p>
+          </div>
           <h2
             class="sm:text-md mb-3 text-center font-medium lg:text-2xl"
             id="localCity"
