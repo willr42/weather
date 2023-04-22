@@ -57,7 +57,6 @@ async function fetchClosestCity(closestCityUrl) {
 
 function handleLocationError(error) {
   const localError = document.querySelector("#localError");
-
   localError.classList.toggle("flex");
   localError.classList.toggle("hidden");
 }
@@ -97,3 +96,19 @@ function checkEmoji(temperature) {
     return EMOJIS.hot;
   }
 }
+
+const searchForm = document.querySelector("#searchForm");
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const cityName = formData.get("city");
+  if (cityName) {
+    fetchCityWeather(cityName)
+      .then((data) => {
+        updateDOM("search", cityName, data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+});
