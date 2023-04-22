@@ -1,23 +1,18 @@
 require("dotenv").config();
-import fetch from "node-fetch";
-
+axios = require("axios");
 exports.handler = async function (event, context) {
   try {
     const { city } = event.queryStringParameters;
     const cityName = `https://api.api-ninjas.com/v1/weather?city=${city}`;
-    let response = await fetch(cityName, {
+    let response = await axios.get(cityName, {
       headers: {
         "X-Api-Key": process.env.API_KEY,
       },
     });
-    if (response.status !== 200) {
-      return { statusCode: 400, body: "Not found" };
-    }
 
-    let data = await response.json();
     return {
       statusCode: 200,
-      body: JSON.stringify(data),
+      body: JSON.stringify(response.data),
     };
   } catch (error) {
     console.log(error);
